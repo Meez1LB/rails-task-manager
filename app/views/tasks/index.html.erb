@@ -1,0 +1,17 @@
+<h1>Task Manager</h1>
+
+
+<ul>
+  <% @tasks.each do |t| %>
+    <li>
+       <form action="tasks/<%= t.id %>" method="post">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+         <input type="checkbox" <%= "checked" if t.completed %>>
+         <%= link_to t.title, task_path(t) %>
+         <input type="submit" value="save">
+       </form>
+    </li>
+  <% end %>
+</ul>
+<%= link_to "Create New Task", new_task_path %>
+
